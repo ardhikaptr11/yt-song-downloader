@@ -20,6 +20,7 @@ class OptionsConstructor:
         self.options[key] = ProgressbarInfo(current_pos, text)
 
     def create_ui(self) -> ctk.CTkToplevel:
+        # Late import to avoid circular imports
         from options_ui import OptionsUI
 
         return OptionsUI(self.options)
