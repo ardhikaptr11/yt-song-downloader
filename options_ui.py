@@ -68,7 +68,7 @@ class OptionsUI(ctk.CTkToplevel):
         icon_path = App.resource_path(App.relative_to_assets("Apps-logo.ico"))
         self.iconbitmap(icon_path)
 
-    def create_radiobuttons(self, key: str, value: str, row):
+    def create_radiobuttons(self, key, value, row):
         self.labels[key] = ctk.CTkLabel(
             master=self,
             text=value.title,
@@ -104,17 +104,6 @@ class OptionsUI(ctk.CTkToplevel):
                 )
             )
             self.widgets[key][i].grid(row=0, column=i, sticky="ew", padx=10, pady=5)
-
-    def get_selected_option(self):
-        current_selected = self.radio_var.get()
-        if current_selected == "Video File":
-            self.widgets["audio_quality_mp3"].configure(state="disabled")
-            self.widgets["video_quality_mp4"].configure(state="normal")
-            self.dropdown_mp4_active = True
-        else:
-            self.widgets["audio_quality_mp3"].configure(state="normal")
-            self.widgets["video_quality_mp4"].configure(state="disabled")
-            self.dropdown_mp4_active = False
 
     def create_dropdown(self, key, value, row):
         self.labels[key] = ctk.CTkLabel(
@@ -188,6 +177,17 @@ class OptionsUI(ctk.CTkToplevel):
         )
         self.widgets[key].set(value.current_pos)
         self.widgets[key].place(anchor="center", x=350, y=250)
+
+    def get_selected_option(self):
+        current_selected = self.radio_var.get()
+        if current_selected == "Video File":
+            self.widgets["audio_quality_mp3"].configure(state="disabled")
+            self.widgets["video_quality_mp4"].configure(state="normal")
+            self.dropdown_mp4_active = True
+        else:
+            self.widgets["audio_quality_mp3"].configure(state="normal")
+            self.widgets["video_quality_mp4"].configure(state="disabled")
+            self.dropdown_mp4_active = False
 
     def get_selected_item(self, choice):
         self.selected_item = choice
@@ -290,6 +290,7 @@ class OptionsUI(ctk.CTkToplevel):
 
         self.labels["download"].configure(text="")
 
+    # A callback function to make the progress bar work
     def on_progress(self, stream, chunk, bytes_remaining):
         self.total_size = stream.filesize
         self.bytes_downloaded = self.total_size - bytes_remaining
@@ -300,6 +301,7 @@ class OptionsUI(ctk.CTkToplevel):
 
         self.after(0, self.update_progress)
 
+    # To update the progress bar
     def update_progress(self):
         self.labels["progress"].configure(text=f"{self.percentage} %")
         self.widgets["progress"].set(float(self.progress) / 100)
