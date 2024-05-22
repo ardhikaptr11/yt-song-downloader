@@ -1,7 +1,7 @@
 # YouTube Song Downloader by Ardhika
 
 ## Project Overview
-This is a GUI apps project (Bahasa version) created using Python that will help you download music-categorized-only videos directly from YouTube. The main idea of ​​this project is that I'm too lazy looking for YouTube downloader website on the internet :) The apps integrated with windows toast notification, allowing you to know whether the song is already downloaded or open a downloaded song directly from the toast. Unfortunately, the toast notification only work for WINDOWS 10 & 11.
+This is a GUI apps project (Bahasa version) created using Python that will help you download music-categorized-only videos directly from YouTube. The main idea of ​​this project is that I'm too lazy looking for YouTube downloader website on the internet :) The apps is integrated with windows toast notification, allowing you to know whether the song is already downloaded or open a downloaded song directly from the toast. Unfortunately, the toast notification only work for WINDOWS 10 & 11.
 
 # Main UI
 
